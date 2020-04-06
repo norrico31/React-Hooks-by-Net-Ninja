@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import uuid from 'react-uuid';
 
+import NewSongForm from './NewSongForm';
+
 const SongList = () => {
 
     // it takes 2 arguments. 1st argument return the data, 2nd argument a function to change the data 
@@ -10,8 +12,8 @@ const SongList = () => {
         { title: 'this wild darkness', id: 3 }
     ]);
 
-    const addSong = () => {
-        setSongs([ ...songs, { title: 'new song', id: uuid() }]);
+    const addSong = (title) => {
+        setSongs([ ...songs, { title: title, id: uuid() }]);
     }
 
     return (
@@ -23,7 +25,7 @@ const SongList = () => {
                     )
                 })}
             </ul>
-            <button onClick={ addSong }>Add a song</button>
+            <NewSongForm addSong={ addSong }/>
         </div>
     )
 }
